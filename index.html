@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerador de senha</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <section class="conteudo">
+        <div class="conteudo-titulo">
+            <img src="unlock.svg" alt="cadeado fechado" />
+            <h2 class="titulo-principal">Gerador de senhas</h2>
+            <h3 class="titulo-secundario">Gere instantaneamente uma senha aleatória e segura</h3>
+        </div>
+
+        <div class="conteudo-senha">
+            <label for="senha">Senha</label>
+            <input name="senha" type="text" id="campo-senha" readonly />
+
+            <!-- Contador acima do QR Code -->
+            <div id="contador-tempo" class="contador-tempo" style="display: none; text-align: center; margin-top: 16px;">
+                ⏳ Expira em <span id="tempo-restante">30</span>s
+            </div>
+
+            <!-- QR Code -->
+            <div id="qrcode" style="margin-top: 20px;"></div>
+
+            <!-- Botão Baixar Imagem -->
+            <button id="botao-baixar" class="parametro-senha__botao">Baixar imagem</button>
+        </div>
+
+        <!-- Botão Gerar Senha fixo na lateral -->
+        <button id="botao-gerar" class="parametro-senha__botao">Gerar senha</button>
+
+        <div class="parametro">
+            <h3 class="parametro-titulo">Personalize sua senha</h3>
+            <div class="parametro-coluna__senha">
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Número de caracteres</h4>
+                    <div class="parametro-senha-botoes">
+                        <button class="parametro-senha__botao" id="btn-diminuir">-</button>
+                        <p class="parametro-senha__texto" id="numero-senha-texto">12</p>
+                        <button class="parametro-senha__botao" id="btn-aumentar">+</button>
+                    </div>
+                </div>
+
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Características da senha</h4>
+                    <div class="parametro-senha-checkbox">
+                        <input name="maiusculo" type="checkbox" class="checkbox" checked />
+                        <label for="maiusculo">Letras maiúsculas</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input name="minusculo" type="checkbox" class="checkbox" checked />
+                        <label for="minusculo">Letras minúsculas</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input name="numero" type="checkbox" class="checkbox" />
+                        <label for="numero">Números</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input name="simbolo" type="checkbox" class="checkbox" />
+                        <label for="simbolo">Símbolos</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input name="caracteres-especiais" type="checkbox" class="checkbox" />
+                        <label for="caracteres-especiais">Caracteres especiais</label>
+                    </div>
+                </div>
+
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Força da senha</h4>
+                    <div class="barra-forca">
+                        <div class="nivel-forca" id="nivelForca"></div>
+                    </div>
+                    <div class="parametro-senha-textos">
+                        <p>Fraca</p>
+                        <p>Média</p>
+                        <p>Forte</p>
+                    </div>
+                    <p class="entropia"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="conteudo">
+        <div class="conteudo-titulo">
+            <h2 class="titulo-principal">Classificação por Idade</h2>
+            <h3 class="titulo-secundario">Veja se você é criança, adolescente ou adulto</h3>
+        </div>
+        <label for="idadeInput">Digite sua idade</label>
+        <div class="campo-idade-container">
+            <input type="number" id="idadeInput" placeholder="Ex: 15" class="campo-idade-bonito" maxlength="3" />
+        </div>
+        <button id="botao-verificar" class="parametro-senha__botao">Verificar</button>
+        <div class="parametro-senha">
+            <h4 class="parametro-senha__titulo">Resultado</h4>
+            <div class="barra-forca">
+                <div class="nivel-forca" id="barraIdade"></div>
+            </div>
+            <p id="resultadoIdade"></p>
+        </div>
+    </section>
+
+    <!-- Bibliotecas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Script da senha temporária -->
+    <script>
+        let tempoRestante = 30;
+        let intervaloSenhaTemp;
+
+        function iniciarContadorSenhaTemporaria() {
+            clearInterval(intervaloSenhaTemp);
+            tempoRestante = 30;
+
+            const contador = document.getElementById('contador-tempo');
+            const tempoSpan = document.getElementById('tempo-restante');
+            const campoSenha = document.getElementById('campo-senha');
+
+            contador.style.display = 'block';
+            tempoSpan.textContent = tempoRestante;
+
+            intervaloSenhaTemp = setInterval(() => {
+                tempoRestante--;
+                tempoSpan.textContent = tempoRestante;
+
+                if (tempoRestante <= 0) {
+                    clearInterval(intervaloSenhaTemp);
+                    campoSenha.value = '';
+                    contador.style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        document.getElementById('botao-gerar').addEventListener('click', () => {
+            iniciarContadorSenhaTemporaria();
+        });
+    </script>
+<footer class="rodape">
+  <p>Desenvolvido por  <a href="https://seulink.com" target="_blank" rel="noopener">Vitoria Salim</a></p>
+  <div class="redes-sociais">
+    <a href="https://api.whatsapp.com/send?phone=554199766603&text=Olá!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <img class="icone-social" src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/salim_vitoria/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img class="icone-social" src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram">
+    </a>
+  </div>
+</footer>
+</body>
+
+</html>
