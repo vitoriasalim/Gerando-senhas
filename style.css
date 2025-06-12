@@ -360,3 +360,46 @@ label {
   height: 24px;
   filter: brightness(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
 }
+/* Tornar layout responsivo para qualquer celular */
+@media screen and (max-width: 767px) {
+  /* Conteúdos principais centralizados e com largura fluida */
+  #qrcode {
+    width: 100% !important;
+    max-width: 350px !important;
+    height: auto !important;
+    margin: 0 auto;
+    display: block;
+  }
+
+  #campo-senha {
+    width: 100% !important;
+    max-width: 400px !important;
+    font-size: 28px !important;
+    margin: 0 auto;
+    display: block;
+  }
+
+  #botao-gerar {
+    position: static !important;
+    margin: 20px auto !important;
+    display: block !important;
+    width: fit-content !important;
+  }
+
+  .parametro-senha {
+    width: 90% !important;
+    max-width: 400px !important;
+    margin: 0 auto 32px auto !important;
+  }
+
+  .parametro-coluna__senha {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: center !important;
+  }
+
+  #contador-tempo {
+    margin-left: 0 !important;
+    margin: 0 auto 16px auto !important;
+  }
+}
