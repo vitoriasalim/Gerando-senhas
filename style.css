@@ -360,46 +360,46 @@ label {
   height: 24px;
   filter: brightness(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
 }
-/* Tornar layout responsivo para qualquer celular */
+/* Ajuste responsivo básico para celulares */
 @media screen and (max-width: 767px) {
-  /* Conteúdos principais centralizados e com largura fluida */
-  #qrcode {
+  body, .conteudo, .conteudo-senha, .parametro {
     width: 100% !important;
-    max-width: 350px !important;
-    height: auto !important;
-    margin: 0 auto;
-    display: block;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
   }
 
   #campo-senha {
     width: 100% !important;
-    max-width: 400px !important;
-    font-size: 28px !important;
-    margin: 0 auto;
-    display: block;
+    font-size: 24px !important;
+  }
+
+  #qrcode {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
   }
 
   #botao-gerar {
     position: static !important;
     margin: 20px auto !important;
     display: block !important;
-    width: fit-content !important;
+    width: auto !important;
   }
 
   .parametro-senha {
-    width: 90% !important;
-    max-width: 400px !important;
-    margin: 0 auto 32px auto !important;
+    width: 100% !important;
+    margin: 0 auto 20px auto !important;
   }
 
   .parametro-coluna__senha {
     flex-direction: column !important;
-    gap: 16px !important;
-    align-items: center !important;
+    gap: 12px !important;
+    align-items: stretch !important;
   }
 
   #contador-tempo {
     margin-left: 0 !important;
-    margin: 0 auto 16px auto !important;
+    text-align: center !important;
   }
 }
