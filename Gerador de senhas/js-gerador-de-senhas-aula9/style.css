@@ -1,0 +1,362 @@
+:root {
+    --branco: white;
+    --cor-de-fundo: #00162e;
+    --fundo-senha: #00244d;
+    --fundo-texto: #001e40;
+    --borda: #0075ff;
+    --roboto: 'Roboto', sans-serif;
+    --roboto-mono: 'Roboto Mono', monospace;
+}
+
+* {
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--branco);
+    background-color: var(--cor-de-fundo);
+    font-family: var(--roboto);
+}
+
+.titulo-principal {
+    font-family: var(--roboto-mono);
+    font-size: 32px;
+}
+
+.titulo-secundario {
+    font-size: 24px;
+}
+
+.conteudo-titulo {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.conteudo-senha {
+    margin-top: 80px;
+    background: var(--fundo-senha);
+    padding: 24px;
+    border-bottom: 6px solid var(--borda);
+}
+
+#campo-senha {
+    background-color: var(--fundo-senha);
+    border: none;
+    color: var(--branco);
+    font-family: var(--roboto-mono);
+    font-size: 40px;
+    width: 70%;
+}
+
+#campo-senha:focus {
+    outline: none;
+}
+
+.conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.parametro {
+    background-color: var(--fundo-texto);
+    border: 2px solid var(--borda);
+    margin-top: 32px;
+    padding: 24px;
+}
+
+.parametro-titulo {
+    font-family: var(--roboto-mono);
+    font-size: 28px;
+}
+
+.parametro-senha__titulo {
+    font-size: 24px;
+}
+
+.parametro-coluna__senha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parametro-senha {
+    width: 50%;
+    margin: 0 auto 32px auto;
+}
+
+.parametro-senha-botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.parametro-senha__botao {
+    background: linear-gradient(145deg, #003366, #0059b3);
+    color: var(--branco);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 24px;
+    font-family: var(--roboto-mono);
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 117, 255, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.parametro-senha__botao:hover {
+    background: linear-gradient(145deg, #0059b3, #0075ff);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 117, 255, 0.4);
+}
+
+.parametro-senha__botao:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 8px rgba(0, 117, 255, 0.3);
+}
+
+.parametro-senha__botao:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.parametro-senha__texto {
+    padding: 24px;
+    border-top: 2px solid var(--borda);
+    border-bottom: 2px solid var(--borda);
+    margin: 0;
+    font-size: 24px;
+    font-family: var(--roboto-mono);
+    user-select: none;
+}
+
+label {
+    font-size: 20px;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Barra de força geral */
+.barra-forca {
+  width: 100%;
+  height: 35px;          /* Barra maior */
+  background-color: #eee; /* Fundo suave */
+  border-radius: 20px;    /* Cantos bem arredondados */
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+}
+
+/* Barra que cresce - com transição suave */
+/* Barra de força geral */
+.barra-forca {
+  width: 100%;
+  height: 35px;          /* Barra maior */
+  background-color: #eee; /* Fundo suave */
+  border-radius: 20px;    /* Cantos bem arredondados */
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+}
+
+/* Barra que cresce - com transição suave */
+.nivel-forca {
+  height: 100%;
+  width: 0%;
+  border-radius: 20px 0 0 20px;
+  transition: width 0.5s ease;
+}
+
+/* Cores para diferentes níveis, aplicadas via JS dinamicamente */
+.nivel-fraco {
+  background: linear-gradient(90deg, #E71B32, #B00020);
+  box-shadow: 0 0 10px #E71B32;
+}
+
+.nivel-medio {
+  background: linear-gradient(90deg, #FAF408, #FFD700);
+  box-shadow: 0 0 10px #FFD700;
+}
+
+.nivel-forte {
+  background: linear-gradient(90deg, #00FF85, #00CC66);
+  box-shadow: 0 0 10px #00CC66;
+}
+
+/* Texto do resultado maior e mais estilizado */
+.parametro-senha p#resultadoIdade {
+  font-size: 1.8rem; /* Aproximadamente 29px */
+  font-weight: 700;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+    .parametro-coluna__senha {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    .parametro-senha {
+        width: 30%;
+    }
+}
+#barraIdade {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Ajuste para o contêiner do QR Code */
+#qrcode {
+    margin: 0 auto;
+    width: 1000px;  /* Ajuste para tamanho do QR */
+    height: 180px;
+}
+/* Centralizar o botão abaixo do QR code */
+#botao-baixar {
+  margin-top: 12px;
+  margin-left: var(--posicao-botao-baixar, 0px);
+  /* outras propriedades do botão que você já tem */
+  background: linear-gradient(145deg, #003366, #0059b3);
+  color: var(--branco);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 24px;
+  font-family: var(--roboto-mono);
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 117, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#botao-baixar:hover {
+  background: linear-gradient(145deg, #0059b3, #0075ff);
+  transform: translateY(-2px);
+  
+}
+#botao-baixar {
+  display: block;
+  margin-left: var(--posicao-botao-baixar, 45px);
+  margin-right: 0;
+}
+.campo-idade-container {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.campo-idade-bonito {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: 0.3s ease;
+    outline: none;
+}
+
+.campo-idade-bonito:focus {
+    border-color: #4CAF50;
+    background-color: #e9ffe9;
+}
+/* Adicione ao seu CSS para dar um cursor de 'mover' no botão */
+/* Remova ou comente isso */
+#botao-gerar {
+  position: relative; 
+  margin-left: 50px; /* afasta da esquerda */
+   top: -350px;  /* ou simplesmente remova position fixed */
+  margin-top: 20px;  /* ajuste o espaço se quiser */
+  cursor: pointer;
+  background: linear-gradient(145deg, #003366, #0059b3);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 24px;
+  font-family: 'Roboto Mono', monospace;
+  box-shadow: 0 6px 12px rgba(0, 117, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+  margin-left: 910px; /* afasta da esquerda */
+  margin-top: 20px; 
+}
+
+#botao-gerar:hover {
+  background: linear-gradient(145deg, #0059b3, #0075ff);
+  transform: translateY(-2px);
+}
+
+#contador-tempo {
+    position: static;
+    margin: 0 auto 16px auto;
+    margin-left: 72px; /* desloca 50px para a esquerda */
+    background-color: rgba(0, 22, 46, 0.9);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    width: fit-content;
+    display: block;
+
+    
+}
+.rodape {
+  background-color: var(--cor-de-fundo);
+  color: var(--branco);
+  text-align: center;
+  padding: 16px 0;
+  border-top: 3px solid var(--borda);
+  font-family: var(--roboto);
+  font-size: 16px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.rodape a {
+  color: var(--borda);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rodape a:hover,
+.rodape a:focus {
+  text-decoration: underline;
+}
+
+.redes-sociais {
+  margin-top: 8px;
+}
+
+.redes-sociais a {
+  display: inline-block;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.redes-sociais a:hover,
+.redes-sociais a:focus {
+  transform: scale(1.2);
+}
+
+.redes-sociais img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+}
